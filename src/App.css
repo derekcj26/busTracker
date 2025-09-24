@@ -1,0 +1,444 @@
+/* App Layout */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.app-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.app-header h1 {
+  margin: 0 0 0.5rem 0;
+  color: #1e293b;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #3b82f6, #1e40af);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.app-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 1.1rem;
+}
+
+.app-content {
+  flex: 1;
+  position: relative;
+  height: calc(100vh - 120px);
+  width: 100%;
+}
+
+.search-section {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  width: 350px;
+  height: auto;
+  min-height: 200px;
+  max-height: 300px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  overflow: visible;
+  transition: all 0.3s ease;
+}
+
+.search-section.expanded {
+  max-height: calc(100vh - 200px) !important;
+  height: auto !important;
+  min-height: 400px !important;
+  background: rgba(255, 255, 255, 0.98) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2) !important;
+  border: 2px solid #3b82f6 !important;
+  overflow-y: auto !important;
+}
+
+/* Ensure collapsed state is properly applied */
+.search-section:not(.expanded) {
+  max-height: 300px !important;
+  min-height: 200px !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
+  border: none !important;
+  overflow: visible !important;
+}
+
+.map-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f8fafc;
+}
+
+/* Zoom Controls */
+.zoom-controls {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 1000;
+}
+
+.zoom-button {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #1e293b;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.zoom-button:hover {
+  background: rgba(255, 255, 255, 1);
+  border-color: #3b82f6;
+  color: #3b82f6;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.zoom-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Search Bar Styles */
+.search-container {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.search-header {
+  margin-bottom: 1rem;
+}
+
+.search-header h3 {
+  margin: 0;
+  color: #1e293b;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.search-input-container {
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.search-dropdown {
+  position: relative;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  margin-top: 1rem;
+  max-height: 400px; /* Approximately 3 items * 80px each */
+  overflow-y: auto;
+}
+
+/* Custom scrollbar for search dropdown */
+.search-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.search-dropdown::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.search-dropdown::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.search-dropdown::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.search-option {
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  border-bottom: 1px solid #f1f5f9;
+  transition: background-color 0.2s ease;
+}
+
+.search-option:hover {
+  background-color: #f8fafc;
+}
+
+.search-option.selected {
+  background-color: #eff6ff;
+  border-left: 4px solid #3b82f6;
+}
+
+.search-option:last-child {
+  border-bottom: none;
+}
+
+.route-name {
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.25rem;
+}
+
+.route-description {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.no-results {
+  padding: 1rem 1.5rem;
+  color: #64748b;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid #e2e8f0;
+  border-top: 2px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Clear Button */
+.clear-button {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #64748b;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.clear-button:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+@keyframes spin {
+  0% { transform: translateY(-50%) rotate(0deg); }
+  100% { transform: translateY(-50%) rotate(360deg); }
+}
+
+/* Status Messages */
+.loading-message, .error-message {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.loading-message {
+  background: #eff6ff;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+}
+
+.error-message {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+/* Route Info */
+.route-info {
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 1rem;
+}
+
+.route-info h3 {
+  margin: 0 0 0.5rem 0;
+  color: #1e293b;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.route-info p {
+  margin: 0 0 1rem 0;
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.route-stats {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.route-stats span {
+  background: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #3b82f6;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Map Container */
+.map-container {
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
+  position: relative;
+}
+
+/* Ensure Leaflet map takes full container */
+.leaflet-container {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .search-section {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+    max-height: 40vh;
+    padding: 1rem;
+  }
+  
+  .search-section.expanded {
+    max-height: 70vh !important;
+    min-height: 400px !important;
+  }
+  
+  .zoom-controls {
+    top: 1rem;
+    right: 1rem;
+  }
+  
+  .zoom-button {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+  }
+  
+  .app-header h1 {
+    font-size: 2rem;
+  }
+  
+  .app-header p {
+    font-size: 1rem;
+  }
+  
+  .map-section {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header {
+    padding: 1rem;
+  }
+  
+  .app-header h1 {
+    font-size: 1.75rem;
+  }
+  
+  .search-section {
+    top: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+    padding: 0.75rem;
+    max-height: 35vh;
+  }
+  
+  .search-section.expanded {
+    max-height: 60vh !important;
+    min-height: 300px !important;
+  }
+  
+  .zoom-controls {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+  
+  .zoom-button {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+  
+  .search-input {
+    padding: 0.75rem 1rem;
+  }
+  
+  .route-info {
+    padding: 1rem;
+  }
+  
+  .route-stats {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
