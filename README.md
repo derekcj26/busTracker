@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Gold Coast Bus Tracker
 
 A React-based web application that tracks bus movements in real-time across the Gold Coast, Australia using OpenStreetMap and TransLink's public transport data.
@@ -222,3 +223,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - [ ] Offline map support
 - [ ] Accessibility improvements
 - [ ] Dark mode theme
+=======
+# busTracker
+>>>>>>> da3ece6ad9f8c9053143a514dcd8353985901351
