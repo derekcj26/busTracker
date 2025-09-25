@@ -1,31 +1,34 @@
 {
   "name": "bustracker",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "dev": "concurrently \"npm run dev --prefix frontend\" \"npm run dev --prefix backend\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/derekcj26/busTracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/derekcj26/busTracker/issues"
+  },
+  "homepage": "https://github.com/derekcj26/busTracker#readme",
   "dependencies": {
+    "@types/node": "^24.5.2",
     "axios": "^1.12.2",
-    "leaflet": "^1.9.4",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-leaflet": "^5.0.0"
+    "express": "^5.1.0",
+    "protobufjs": "^7.5.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
   },
   "devDependencies": {
-    "@eslint/js": "^9.36.0",
-    "@types/leaflet": "^1.9.20",
-    "@types/react": "^19.1.13",
-    "@types/react-dom": "^19.1.9",
-    "@vitejs/plugin-react": "^5.0.3",
-    "eslint": "^9.36.0",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.20",
-    "globals": "^16.4.0",
-    "vite": "^7.1.7"
+    "concurrently": "^8.2.2",
+    "protobufjs-cli": "^1.1.3"
   }
 }
